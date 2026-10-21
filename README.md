@@ -1,14 +1,16 @@
 API Mate
 ========
 
-API Mate is a web application (a simple web page) to access the APIs of [BigBlueButton](http://bigbluebutton.org) and [Mconf](http://mconf.org).
+API Mate is a web application (a simple web page) to access the API of [BigBlueButton](https://bigbluebutton.org).
 
 Usage
 -----
 
-* Use it online at http://mconf.github.io/api-mate; or
-* Get the latest version from the branch [`gh-pages`](https://github.com/mconf/api-mate/tree/gh-pages) and
-  open `index.html` in your browser.
+* Use it online at https://bigbluebutton.github.io/api-mate; or
+* Build it yourself (see [Development](#development)) and open `lib/api_mate.html` in your browser.
+
+The online version is built and published automatically to GitHub Pages by the
+[`pages` workflow](.github/workflows/pages.yml) on every push to `master`.
 
 
 ## Passing parameters in the URL
@@ -25,7 +27,7 @@ api_mate.html#server=http://my-server.com/bigbluebutton/api&sharedSecret=lsk8df7
 ```
 
 The parameters should be passed in the hash part of the URL, so they are not submitted to the server.
-This means the application at http://mconf.github.io/api-mate will not receive your server's URL
+This means the application at https://bigbluebutton.github.io/api-mate will not receive your server's URL
 and shared secret. You can also pass these parameters in the search string part of the URL, but that means the server will have access to your parameters (might be useful if
 you're hosting your own API Mate).
 
@@ -53,16 +55,16 @@ all fail.
 
 We offer two solutions:
 
-1. Change your BigBlueButton/Mconf-Live server to accept cross-domain requests (ok, but only
+1. Change your BigBlueButton server to accept cross-domain requests (ok, but only
    recommended for development and testing); or
 2. Use a local proxy that will receive the calls and proxy them to your web conference server.
 
 ### 1. Change your server to accept cross-domain requests
 
 With this option you will enable cross-origin requests using
-[CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) on your BigBlueButton/Mconf-Live server.
+[CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) on your BigBlueButton server.
 
-#### In BigBlueButton/Mconf-Live with Nginx
+#### In BigBlueButton with Nginx
 
 Copy to following block of code to the bottom of the file `/etc/bigbluebutton/nginx/web.nginx`, inside the
 block `location /bigbluebutton`:
@@ -110,20 +112,21 @@ app.all '*', (req, res, next) ->
 ### 2. Use a local proxy
 
 There's an application that can be used as a local proxy called `api-mate-proxy` available in this
-repository, in the folder [proxy](https://github.com/mconf/api-mate/tree/master/proxy).
+repository, in the folder [proxy](https://github.com/bigbluebutton/api-mate/tree/master/proxy).
 
 It is a very simple Node.js application that you can run locally to receive all requests
 from the API Mate and proxy them to your web conference server.
 
 #### Usage
 
-See `api-mate-proxy`'s [README file](https://github.com/mconf/api-mate/tree/master/proxy).
+See `api-mate-proxy`'s [README file](https://github.com/bigbluebutton/api-mate/tree/master/proxy).
 
 
 Development
 -----------
 
-At first, install [Node.js](http://nodejs.org/) (see `package.json` for the specific version required).
+At first, install [Node.js](http://nodejs.org/) (see `.nvmrc` for the recommended version; any
+version >= 18 should work).
 
 Install the dependencies with:
 
@@ -131,13 +134,13 @@ Install the dependencies with:
 
 Then compile the source files with:
 
-    [./node_modules/.bin/]cake build
+    npm run build
 
 This will compile all files inside `src/` to formats that can be opened in the browser and place them into `/lib`.
 
 To watch for changes and compile the files automatically, run:
 
-    [./node_modules/.bin/]cake watch
+    npm run watch
 
 
 License

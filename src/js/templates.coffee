@@ -40,9 +40,9 @@ postErrorTemplate =
    <ul>
      <li>
        Your server does not allow <strong>cross-domain requests</strong>.
-       By default BigBlueButton and Mconf-Live <strong>do not</strong> allow cross-domain
+       By default BigBlueButton <strong>does not</strong> allow cross-domain
        requests, so you have to enable it to test this request via POST. Check our
-       <a href=\"https://github.com/mconf/api-mate/tree/master#allow-cross-domain-requests\">README</a>
+       <a href=\"https://github.com/bigbluebutton/api-mate/tree/master#allow-cross-domain-requests\">README</a>
        for instructions on how to do it.
      </li>
      <li>

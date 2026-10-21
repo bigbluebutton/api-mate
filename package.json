@@ -1,15 +1,19 @@
 {
   "name": "api-mate",
   "version": "0.0.1",
-  "dependencies": {
-    "pug-cli": "^1.0.0-alpha6",
-    "uglify-js": "^3.17.4"
+  "private": true,
+  "scripts": {
+    "build": "cake build",
+    "watch": "cake watch"
   },
   "devDependencies": {
-    "pug": "3.0.2",
-    "node-sass": "7.0.3",
+    "chokidar": "^3.6.0",
     "coffee-script": "1.6.3",
-    "chokidar": "3.5.3"
+    "pug": "^3.0.3",
+    "pug-cli": "^1.0.0-alpha6",
+    "sass": "^1.80.0"
   },
-  "engine": "node >= 12.4.0"
+  "engines": {
+    "node": ">=18"
+  }
 }
