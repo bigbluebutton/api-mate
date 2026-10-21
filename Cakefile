@@ -2,7 +2,6 @@ chokidar = require('chokidar')
 fs = require('fs')
 {spawn} = require('child_process')
 pug = require('pug')
-sass = require('node-sass')
 
 binPath = './node_modules/.bin/'
 
@@ -31,10 +30,10 @@ compileView = (done) ->
       done?()
 
 compileCss = (done) ->
-  options = ['src/css/api_mate.scss', 'lib/api_mate.css']
-  run 'node-sass', options, ->
-    options = ['src/css/redis_events.scss', 'lib/redis_events.css']
-    run 'node-sass', options, ->
+  options = ['--no-source-map', 'src/css/api_mate.scss', 'lib/api_mate.css']
+  run 'sass', options, ->
+    options = ['--no-source-map', 'src/css/redis_events.scss', 'lib/redis_events.css']
+    run 'sass', options, ->
       done?()
 
 compileJs = (done) ->
